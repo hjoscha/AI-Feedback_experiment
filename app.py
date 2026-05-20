@@ -325,28 +325,28 @@ if "completed" not in st.session_state:
 # App interface
 # ----------------------------------------------------------------------------
 
-st.title("AI Writing Feedback Experiment")
+st.title("AI Tutor Experiment")
 
 st.write(
     """
-    Welcome to the writing experiment.
+    Welkom bij het experiment.
 
-    You will complete two short Dutch writing tasks.
-    After the first task, you will receive AI-generated feedback.
-    After reading the feedback, you will write a second text.
+    Je voert twee korte schrijfopdrachten uit in het Nederlands. 
+    Na de eerste opdracht ontvang je AI-gegenereerde feedback. 
+    Na het lezen van de feedback schrijf je een tweede tekst.
     """
 )
 
 st.info(
-    "Please complete the tasks independently. Do not use translation tools, AI tools, or external help."
+    "Voer de opdrachten zelfstandig uit. Gebruik geen vertaaltools, AI-tools of andere externe hulpmiddelen."
 )
 
 participant_id = st.text_input("Participant ID")
-feedback_language = st.text_input("Feedback language", value="Dutch")
+feedback_language = st.text_input("Feedback taal", value="Nederlands")
 
 st.divider()
 
-st.header("Task 1")
+st.header("Taak 1")
 st.write(
     """
     Schrijf een tekst van ongeveer 150-200 woorden in het Nederlands.
@@ -358,7 +358,7 @@ st.write(
 )
 
 pre_test_text = st.text_area(
-    "Write your first text here",
+    "Schrijf je tekst hier",
     height=250,
     value=st.session_state.pre_test_text
 )
@@ -366,13 +366,13 @@ pre_test_text = st.text_area(
 pre_word_count = count_words(pre_test_text)
 st.caption(f"Word count: {pre_word_count}")
 
-if st.button("Generate AI feedback"):
+if st.button("AI feedback genereren"):
     if not participant_id.strip():
-        st.error("Please enter your participant ID before continuing.")
+        st.error("Voer je participant ID in voordat je verdergaat..")
     elif pre_word_count < 100:
-        st.error("Your text is too short. Please write a longer text before requesting feedback.")
+        st.error("Je tekst is te kort. Schrijf een langere tekst voordat je hem indient.")
     else:
-        with st.spinner("Generating feedback..."):
+        with st.spinner("Feedback genereren..."):
             agent = WritingFeedbackAgent(
                 gemini_model=gemini_model,
                 feedback_strategy=st.session_state.condition
@@ -387,11 +387,11 @@ if st.button("Generate AI feedback"):
 
 if st.session_state.feedback:
     st.divider()
-    st.header("AI Feedback")
+    st.header("AI Tutor Feedback")
     st.text(st.session_state.feedback)
 
     st.divider()
-    st.header("Task 2")
+    st.header("Taak 2")
     st.write(
         """
         Schrijf nu een NIEUWE tekst van ongeveer 150-200 woorden in het Nederlands.
@@ -403,16 +403,16 @@ if st.session_state.feedback:
     )
 
     post_test_text = st.text_area(
-        "Write your second text here",
+        "Schrijf je tekst hier",
         height=250
     )
 
     post_word_count = count_words(post_test_text)
-    st.caption(f"Word count: {post_word_count}")
+    st.caption(f"Aantal woorden: {post_word_count}")
 
-    if st.button("Submit experiment"):
+    if st.button("Experiment inleveren"):
         if post_word_count < 100:
-            st.error("Your second text is too short. Please write a longer text before submitting.")
+            st.error("Je tekst is te kort. Schrijf een langere tekst voordat je hem indient.")
         else:
             save_to_google_sheets(
                 participant_id=participant_id,
@@ -426,7 +426,7 @@ if st.session_state.feedback:
             )
 
             st.session_state.completed = True
-            st.success("Experiment completed. Please return to the questionnaire.")
+            st.success("Experiment klaar! U kunt terug naar de andere webpagina. Bedankt!")
 
 
 if st.session_state.completed:
