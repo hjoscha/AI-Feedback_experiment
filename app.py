@@ -44,6 +44,11 @@ scope = [
 
 service_account_info = dict(st.secrets["GOOGLE_SERVICE_ACCOUNT"])
 
+service_account_info["private_key"] = (
+    service_account_info["private_key"]
+    .replace("\\n", "\n")
+)
+
 creds = ServiceAccountCredentials.from_json_keyfile_dict(
     service_account_info,
     scope
