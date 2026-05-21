@@ -349,7 +349,7 @@ st.divider()
 st.header("Taak 1")
 st.write(
     """
-    Schrijf een tekst van ongeveer 150-200 woorden in het Nederlands.
+    Schrijf een tekst van ongeveer 100-150 woorden in het Nederlands.
 
     Onderwerp: Moet huiswerk onderdeel blijven van het onderwijs?
 
@@ -364,12 +364,12 @@ pre_test_text = st.text_area(
 )
 
 pre_word_count = count_words(pre_test_text)
-st.caption(f"Word count: {pre_word_count}")
+st.caption(f"Word count: {pre_word_count}. Om de word count te updaten kunt u naast het tekstvak klikken.")
 
-if st.button("AI feedback genereren"):
+if st.button("AI tutor feedback genereren"):
     if not participant_id.strip():
         st.error("Voer je participant ID in voordat je verdergaat..")
-    elif pre_word_count < 100:
+    elif pre_word_count < 80:
         st.error("Je tekst is te kort. Schrijf een langere tekst voordat je hem indient.")
     else:
         with st.spinner("Feedback genereren..."):
@@ -394,7 +394,7 @@ if st.session_state.feedback:
     st.header("Taak 2")
     st.write(
         """
-        Schrijf nu een NIEUWE tekst van ongeveer 150-200 woorden in het Nederlands.
+        Schrijf nu een NIEUWE tekst van ongeveer 100-150 woorden in het Nederlands.
 
         Onderwerp: Is online onderwijs goed voor studenten?
 
@@ -408,10 +408,10 @@ if st.session_state.feedback:
     )
 
     post_word_count = count_words(post_test_text)
-    st.caption(f"Aantal woorden: {post_word_count}")
+    st.caption(f"Aantal woorden: {post_word_count}. Om de word count te updaten kunt u naast het tekstvak klikken.")
 
     if st.button("Experiment inleveren"):
-        if post_word_count < 100:
+        if post_word_count < 80:
             st.error("Je tekst is te kort. Schrijf een langere tekst voordat je hem indient.")
         else:
             save_to_google_sheets(
@@ -426,7 +426,7 @@ if st.session_state.feedback:
             )
 
             st.session_state.completed = True
-            st.success("Experiment klaar! U kunt terug naar de andere webpagina. Bedankt!")
+            st.success("Experiment klaar! U kunt terug naar de andere webpagina bovenaan uw scherm. Bedankt!")
 
 
 if st.session_state.completed:
