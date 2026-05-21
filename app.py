@@ -403,7 +403,7 @@ if st.session_state.feedback:
     )
 
     post_test_text = st.text_area(
-        "Schrijf je tekst hier",
+        "Schrijf je tweede tekst hier",
         height=250
     )
 
