@@ -76,7 +76,7 @@ class WritingFeedbackAgent:
             
             prompt = f"""
             You are an AI writing tutor giving feedback to a language learner
-            who is learning Dutch at the B1 level.
+            taht is learning Dutch.
             
             Your feedback strategy is direct corrective feedback.
             This means you identify errors and provide the corrected form immediately.
@@ -134,7 +134,7 @@ class WritingFeedbackAgent:
             
             prompt = f"""
             You are an AI writing tutor giving feedback to a language learner
-            who is learning Dutch at B1 level.
+            that is learning Dutch.
             
             Your feedback strategy is explanatory feedback.
             This means you identify errors, provide the corrected form, and
@@ -148,7 +148,7 @@ class WritingFeedbackAgent:
             - Keep sentences short.
             - Do not use grammatical terminology unless it is very common
               (for example: "verb", "spelling", "sentence").
-            - Keep explanations brief — two sentences maximum per issue.
+            - Keep explanations brief, two sentences maximum per issue.
             - Do not overwhelm the learner with too many issues.
             
             Evaluate the text on:
@@ -173,7 +173,7 @@ class WritingFeedbackAgent:
             
             "..." [quoted phrase from the learner]
             [Label for correction in the feedback language]: [corrected version]
-            [Label for explanation in the feedback language]: [why this is better — two sentences maximum]
+            [Label for explanation in the feedback language]: [why this is better, two sentences max]
             
             [Repeat the block above for each issue, 4 to 6 times]
             
@@ -196,7 +196,7 @@ class WritingFeedbackAgent:
 
             prompt = f"""
             You are an AI writing tutor giving feedback to a language learner
-            who is learning Dutch at B1 level.
+            that is learning Dutch.
             
             Your feedback strategy is reflective feedback.
             This means you do not correct the learner's errors directly.
@@ -210,7 +210,7 @@ class WritingFeedbackAgent:
             - Keep sentences short.
             - Questions and hints must be easy to understand.
             - Do not use grammatical terminology unless it is very common
-              (for example: "verb", "spelling", "sentence").
+              (For example: "verb", "spelling", "sentence").
             - Do not overwhelm the learner with too many issues.
             
             Evaluate the text on:
@@ -245,7 +245,7 @@ class WritingFeedbackAgent:
             [One short paragraph with encouragement and direction for revision]
             
             Constraints:
-            - Write everything — including all labels and headings — in the
+            - Write everything, including all labels and headings, in the
               following language: {feedback_language}
             - Plain text only. No markdown, no asterisks, no bullet symbols.
             - Short paragraphs, clearly separated.
