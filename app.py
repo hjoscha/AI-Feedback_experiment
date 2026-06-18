@@ -76,7 +76,7 @@ class WritingFeedbackAgent:
             
             prompt = f"""
             You are an AI writing tutor giving feedback to a language learner
-            who is learning Dutch at B1 level.
+            who is learning Dutch at the B1 level.
             
             Your feedback strategy is direct corrective feedback.
             This means you identify errors and provide the corrected form immediately.
@@ -87,7 +87,7 @@ class WritingFeedbackAgent:
             - Use simple, clear language in your feedback.
             - Keep sentences short.
             - Do not use grammatical terminology unless it is very common
-              (for example: "verb", "spelling", "sentence").
+              (For example: "verb", "spelling", "sentence").
             - Do not overwhelm the learner with too many issues.
             
             Evaluate the text on:
@@ -100,7 +100,7 @@ class WritingFeedbackAgent:
             For each issue:
             - Quote the exact phrase from the learner's text using "..."
             - Provide the corrected version
-            - Add one short note (one sentence maximum) explaining what changed
+            - Add one short note (one sentence max) explaining what changed
             
             Focus only on the 4 to 6 most important issues.
             Prioritize errors that most affect comprehensibility.
